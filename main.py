@@ -84,6 +84,24 @@ class Zoo:
         file.write(str(len(self.__persons))+'\n')
         for person in self.__persons:
             file.write(person.save()+'\n')
+   def restore_history(self,history):
+        file = open(history,'r')
+        file.read(line)
+        len_list = int(line)
+        self.__animals = []
+        for i in range(len_list):
+            file.read(line)
+            list_in = line.split(sep='|')
+            animal = globals()[list_in(0)].restore(list_in[1:])
+            self.__animals.append(animal)
+        file.read(line)
+        len_list = int(line)
+        self.__persons = []
+        for i in range(len_list):
+            file.read(line)
+            list_in = line.split(sep='|')
+            person = globals()[list_in(0)].restore(list_in[1:])
+            self.__persons.append(person)
 
 bird = Bird
 b1 = bird(name='Птица воробей', age='2', sound='чирик',food='зерно')
